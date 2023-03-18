@@ -1,9 +1,32 @@
 import Recipe from "./Recipe";
 import { Box, CardContent, Card, Typography, Button } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getPastDoneRecipe } from "../api";
+import axios from "axios";
 
 const History = () => {
+  const [meals, setMeals] = useState<any>([]);
+
+  const getRecipes = (indexes: number[]) => {
+    indexes.forEach((index: number) => {
+      axios({
+        url: `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${index}`,
+        method: "get",
+      }).then(
+        (response) => {
+          if (response != null) {
+            setMeals(meals.push(response.data.meals[0]));
+          }
+        },
+        (error) => console.log(error)
+      );
+    });
+  };
+
+  useEffect(() => {
+    getRecipes([53064, 53065]);
+  }, []);
+
   const object = {
     image: "/logo192.png",
     title: "Prima reteta",
@@ -23,7 +46,6 @@ const History = () => {
         sx={{
           backgroundColor: "#303747",
           maxWidth: "90vw",
-          minWidth: "90vw",
           borderRadius: "20px",
         }}
       >

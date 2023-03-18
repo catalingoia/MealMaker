@@ -1,8 +1,10 @@
+import { Slots } from "./Slots";
+import Box from "@mui/material/Box";
+
 export default function Game() {
   return (
-    <div>
-      <h1>Game page</h1>
-      // Your home page content here
-    </div>
+    <>
+      <Slots gameFinish={(matches: any) => console.log(matches)} />
+    </>
   );
 }

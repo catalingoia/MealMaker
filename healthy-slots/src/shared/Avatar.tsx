@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { addPastDoneRecipe } from "../api";
 import avatar from "../assets/avatar.png";
 export default function Avatar() {
   return (
@@ -10,6 +11,9 @@ export default function Avatar() {
           paddingTop: "10px",
           paddingLeft: "25px",
           paddingBottom: "10px",
+        }}
+        onClick={() => {
+          addPastDoneRecipe("52773");
         }}
       >
         <img src={avatar} style={{ height: "40px", width: "40px" }} />

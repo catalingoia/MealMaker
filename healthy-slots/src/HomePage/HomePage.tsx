@@ -5,7 +5,7 @@ import Avatar from "../shared/Avatar";
 
 export default function HomePage() {
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <Avatar></Avatar>
       <AddIngredients></AddIngredients>
       <StartGame></StartGame>

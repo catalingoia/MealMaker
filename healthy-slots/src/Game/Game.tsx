@@ -20,23 +20,22 @@ export default function Game() {
   }
   return (
     <>
-      <Avatar />
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          paddingLeft: "30px",
+          paddingLeft: "24px",
         }}
       >
         <Box
-          sx={{ display: "flex", flexDirection: "column", paddingTop: "100px" }}
+          sx={{ display: "flex", flexDirection: "column", paddingTop: "124px" }}
         >
           <Typography
             variant="h5"
             sx={{
               fontFamily: "Koulen",
-              fontSize: "28px",
+              fontSize: "36px",
               color: "#6FDB8E",
               width: "500px",
             }}

@@ -11,16 +11,15 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 export default function NavBar() {
-  const [value, setValue] = React.useState("recents");
+  const [value, setValue] = React.useState("home");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   const navigate = useNavigate();
-
   return (
     <>
       <BottomNavigation

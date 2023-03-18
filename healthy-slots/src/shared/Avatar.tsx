@@ -12,9 +12,10 @@ export default function Avatar() {
           paddingBottom: "10px",
         }}
       >
-        <img src={avatar} style={{ height: "30px", width: "30px" }} />
+        <img src={avatar} style={{ height: "40px", width: "40px" }} />
         <Typography
           sx={{
+            fontSize: "16px",
             fontFamily: "Open Sans",
             paddingLeft: "10px",
           }}

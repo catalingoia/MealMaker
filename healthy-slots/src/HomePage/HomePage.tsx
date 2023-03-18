@@ -6,7 +6,6 @@ import Avatar from "../shared/Avatar";
 export default function HomePage() {
   return (
     <div>
-      <Avatar></Avatar>
       <AddIngredients></AddIngredients>
       <StartGame></StartGame>
       <History></History>

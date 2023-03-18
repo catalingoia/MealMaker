@@ -16,18 +16,18 @@ const AddIngredients = () => {
         imagePreview: URL.createObjectURL(event.target.files[0]),
         imageFile: event.target.files[0],
       });
-      handleSendImage();
+      handleSendImage(event.target.files[0]);
     }
   };
 
-  const handleSendImage = () => {
+  const handleSendImage = (image: any) => {
     axios({
       method: "post",
       url: "http://192.168.0.157:3001/detect-objects",
       headers: {
         "Content-Type": "image/jpeg",
       },
-      data: imageObject.imageFile,
+      data: image,
     }).then(
       (response) => {
         console.log(response);

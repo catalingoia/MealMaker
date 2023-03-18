@@ -27,7 +27,7 @@ const AddIngredients = () => {
       headers: {
         "Content-Type": "image/jpeg",
       },
-      data: imageObject.imageFile,
+      data: image,
     }).then(
       (response) => {
         console.log(response);

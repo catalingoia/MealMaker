@@ -10,6 +10,7 @@ import Recipe from "./Recipe/Recipe";
 import Achievements from "./Achievements/Achievements";
 import Rewards from "./Rewards/Rewards";
 import NavBar from "./shared/NavBar";
+import Home from "@mui/icons-material/Home";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/rewards",
         element: <Rewards />,
+      },
+      {
+        path: "/",
+        element: <HomePage />,
       },
     ],
   },

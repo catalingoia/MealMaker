@@ -29,7 +29,7 @@ export default function Game() {
         }}
       >
         <Box
-          sx={{ display: "flex", flexDirection: "column", paddingTop: "124px" }}
+          sx={{ display: "flex", flexDirection: "column", paddingTop: "64px" }}
         >
           <Typography
             variant="h5"

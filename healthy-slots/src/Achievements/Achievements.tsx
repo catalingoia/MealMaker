@@ -10,6 +10,8 @@ export default function Achievements() {
           fontSize: "36px",
           color: "#6FDB8E",
           width: "500px",
+          paddingTop: "64px",
+          paddingLeft: "24px",
         }}
       >
         ACHIEVEMENTS

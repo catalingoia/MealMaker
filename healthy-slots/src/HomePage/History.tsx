@@ -1,7 +1,7 @@
-import AddIngredients from "./AddIngredients";
-import StartGame from "./StartGame";
 import Recipe from "./Recipe";
 import { Box, CardContent, Card, Typography, Button } from "@mui/material";
+import { useEffect } from "react";
+import { getPastDoneRecipe } from "../api";
 
 const History = () => {
   const object = {
@@ -10,6 +10,13 @@ const History = () => {
     date: "21/09/2024",
     description: "e buna buna buna buna buna buna de tot",
   };
+
+  useEffect(() => {
+    getPastDoneRecipe().then((data) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
       <Card

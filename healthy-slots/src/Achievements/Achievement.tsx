@@ -28,7 +28,9 @@ export default function Achievement(props: AchievementProps) {
         <Typography fontWeight={"bold"} fontFamily={"Open Sans"}>
           {props.title}
         </Typography>
-        <Typography fontFamily={"Open Sans"}>{props.subtitle}</Typography>
+        <Box sx={{ display: "flex" }}>
+          <Typography fontFamily={"Open Sans"}>{props.subtitle}</Typography>
+        </Box>
       </Box>
     </Box>
   );

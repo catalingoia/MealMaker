@@ -1,8 +1,6 @@
 import React from "react";
 import "./slots.css";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import { IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import styled from "styled-components";
 
 const IngredientsMap = {
@@ -20,7 +18,7 @@ const IngredientsMap = {
 const ButtonsWrapper = styled.div`
   position: absolute;
   top: 70%;
-  left: 40%;
+  left: 10%;
 `;
 
 const GameWrapper = styled.div`
@@ -38,13 +36,11 @@ function WinningSound() {
   );
 }
 
-function RepeatButton(props) {
-  return (
-    <IconButton onClick={props.onClick} sx={{ color: "black" }}>
-      <RefreshIcon />
-    </IconButton>
-  );
-}
+// function RepeatButton(props) {
+//   return (
+
+//   );
+// }
 
 export class Slots extends React.Component {
   constructor(props) {
@@ -102,12 +98,12 @@ export class Slots extends React.Component {
     // const getLoser = () => {
     //   return Slots.loser[Math.floor(Math.random() * Slots.loser.length)];
     // };
-    let repeatButton = null;
+    // let repeatButton = null;
     let winningSound = null;
 
-    if (winner !== null) {
-      repeatButton = <RepeatButton onClick={this.handleClick} />;
-    }
+    // if (winner !== null) {
+    //   repeatButton = <RepeatButton onClick={() => {}} />;
+    // }
 
     if (winner) {
       winningSound = <WinningSound />;
@@ -142,10 +138,41 @@ export class Slots extends React.Component {
           <div className="gradient-fade"></div>
         </div>
         <ButtonsWrapper>
-          <IconButton sx={{ color: "black" }}>
-            <SaveAltIcon />
-          </IconButton>
-          {repeatButton}
+          <Button
+            variant="contained"
+            sx={{
+              fontSize: "24px",
+              fontFamily: "Open Sans",
+              borderRadius: 20,
+              backgroundColor: "#6FDB8E",
+              width: "146px",
+              height: "57px",
+            }}
+          >
+            GO
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              this.handleClick();
+              this.props.handleSpin();
+            }}
+            disabled={this.props.lives === 0}
+            sx={{
+              left: "10%",
+              fontSize: "24px",
+              fontFamily: "Open Sans",
+              borderRadius: 20,
+              backgroundColor: "#B3001B",
+              width: "146px",
+              height: "57px",
+              "&:focus": {
+                backgroundColor: "#B3001B",
+              },
+            }}
+          >
+            SPIN
+          </Button>
         </ButtonsWrapper>
       </GameWrapper>
     );
@@ -238,7 +265,7 @@ class Spinner extends React.Component {
     });
 
     this.timer = setInterval(() => {
-      this.tick();
+      // this.tick();
     }, 100);
   }
 

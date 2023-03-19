@@ -1,8 +1,21 @@
+import { Box, Typography } from "@mui/material";
+
 export default function Rewards() {
   return (
-    <div>
-      <h1>Rewards Page</h1>
-      // Your home page content here
-    </div>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Typography
+        variant="h5"
+        sx={{
+          fontFamily: "Koulen",
+          fontSize: "36px",
+          color: "#6FDB8E",
+          width: "500px",
+          paddingTop: "64px",
+          paddingLeft: "24px",
+        }}
+      >
+        REWARDS
+      </Typography>
+    </Box>
   );
 }

@@ -4,15 +4,15 @@ import { Button } from "@mui/material";
 import styled from "styled-components";
 
 const IngredientsMap = {
-  "-1316": "avocado",
-  "-940": "tomato",
-  "-1128": "rice",
-  "-564": "meat",
-  "-376": "fish",
-  "-752": "carrot",
-  "-188": "egg",
-  0: "chichen",
-  "-1504": "potato",
+  "-1316": "Avocado",
+  "-940": "Tomato",
+  "-1128": "Rice",
+  "-564": "Meat",
+  "-376": "Fish",
+  "-752": "Carrot",
+  "-188": "Egg",
+  0: "Chichen",
+  "-1504": "Potato",
 };
 
 const ButtonsWrapper = styled.div`
@@ -148,6 +148,7 @@ export class Slots extends React.Component {
               width: "146px",
               height: "57px",
             }}
+            onClick={this.props.handleGo}
           >
             GO
           </Button>

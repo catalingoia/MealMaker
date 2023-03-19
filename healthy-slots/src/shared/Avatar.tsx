@@ -8,9 +8,9 @@ export default function Avatar() {
         sx={{
           display: "flex",
           alignItems: "center",
-          paddingTop: "10px",
+          paddingTop: "30px",
           paddingLeft: "25px",
-          paddingBottom: "10px",
+          paddingBottom: "20px",
         }}
         onClick={() => {
           addPastDoneRecipe("52773");

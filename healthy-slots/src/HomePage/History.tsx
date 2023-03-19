@@ -59,6 +59,7 @@ const History = () => {
         sx={{
           backgroundColor: "#303747",
           maxWidth: "90vw",
+          minWidth: "90vw",
           borderRadius: "20px",
         }}
       >
@@ -76,7 +77,9 @@ const History = () => {
             History
           </Typography>
 
-          <List sx={{ maxHeight: "160px", overflowY: "scroll" }}>
+          <List
+            sx={{ maxHeight: "160px", overflowY: "scroll", minHeight: "160px" }}
+          >
             {meals.map((meal: any) => (
               <Recipe
                 onClick={() =>

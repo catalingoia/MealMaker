@@ -26,7 +26,7 @@ const Recipe = (props: any) => {
         alt="Live from space album cover"
       />
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", flexDirection: "column-reverse" }}>
           <Typography
             sx={{
               color: "white",

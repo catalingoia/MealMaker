@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import NavBar from "../shared/NavBar";
 import { AddAPhoto, ArrowForwardIos } from "@mui/icons-material";
+import { addPastDoneRecipe } from "../api";
 
 export default function Recipe() {
   const [recipes, setRecipes] = useState<any>([]);
@@ -26,6 +27,7 @@ export default function Recipe() {
         )
         .then((response: any) => {
           setSpecificRecipe(response.data.meals);
+
           console.log("FOR SPECIFIC RECIPE", response.data.meals);
         });
     }
@@ -135,7 +137,7 @@ export default function Recipe() {
               margin: "10px 0px 20px 0px",
             }}
           >
-            {specificRecipe[0]?.strInstructions}
+            {specificRecipe[index]?.strInstructions}
           </Typography>
           <div
             style={{
@@ -158,6 +160,10 @@ export default function Recipe() {
                 "&:focus": {
                   backgroundColor: "#6fdb8e",
                 },
+              }}
+              onClick={() => {
+                addPastDoneRecipe(specificRecipe[index]?.idMeal);
+                navigate("/");
               }}
             >
               <Typography

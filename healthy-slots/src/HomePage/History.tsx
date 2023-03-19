@@ -1,19 +1,39 @@
 import Recipe from "./Recipe";
-import { Box, CardContent, Card, Typography, Button } from "@mui/material";
-import { useEffect } from "react";
+import {
+  List,
+  Box,
+  CardContent,
+  Card,
+  Typography,
+  Button,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import { getPastDoneRecipe } from "../api";
+import axios from "axios";
 
 const History = () => {
-  const object = {
-    image: "/logo192.png",
-    title: "Prima reteta",
-    date: "21/09/2024",
-    description: "e buna buna buna buna buna buna de tot",
+  const [meals, setMeals] = useState<any>([]);
+
+  const getRecipes = (indexes: number[]) => {
+    indexes.forEach((index: number) => {
+      axios({
+        url: `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${index}`,
+        method: "get",
+      }).then(
+        (response) => {
+          if (response != null) {
+            setMeals([...meals, response.data.meals[0]]);
+          }
+        },
+        (error) => console.log(error)
+      );
+    });
   };
 
   useEffect(() => {
     getPastDoneRecipe().then((data) => {
       console.log(data);
+      getRecipes(data);
     });
   }, []);
 
@@ -23,7 +43,6 @@ const History = () => {
         sx={{
           backgroundColor: "#303747",
           maxWidth: "90vw",
-          minWidth: "90vw",
           borderRadius: "20px",
         }}
       >
@@ -40,9 +59,11 @@ const History = () => {
           >
             History
           </Typography>
-          <Box sx={{ maxHeight: "280px", overflowY: "scroll" }}>
-            <Recipe {...object}></Recipe>
-          </Box>
+          <List sx={{ maxHeight: "280px", overflowY: "scroll" }}>
+            {meals.map((meal: any) => (
+              <Recipe {...meal} />
+            ))}
+          </List>
         </CardContent>
       </Card>
     </Box>

@@ -19,8 +19,12 @@ export const addPastDoneRecipe = async (recipeId: string) => {
     const ref = doc(db, "users", "VPZY4P66gWSo8BE9n2F1");
     const docSnap = await getDoc(ref);
     const data = docSnap.data();
+    const timestamp = Date.now();
+    const newEntry: any = {};
+    newEntry[timestamp] = recipeId;
 
-    if (data) await updateDoc(ref, { recipes: [...data.recipes, recipeId] });
+    if (data)
+      await updateDoc(ref, { recipes: { ...data.recipes, ...newEntry } });
   } catch (e) {
     console.error("Error adding document: ", e);
   }

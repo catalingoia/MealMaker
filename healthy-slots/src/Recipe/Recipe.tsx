@@ -113,10 +113,11 @@ export default function Recipe() {
               color: "black",
               fontFamily: "Open Sans",
               fontSize: "18px",
+              fontWeight: "550",
             }}
           >
             Here is the recipe for the following ingredients of your choice:
-            {ingredients}
+            <span style={{ fontWeight: "bold" }}>{` ${ingredients}`}</span>
           </Typography>
 
           <img

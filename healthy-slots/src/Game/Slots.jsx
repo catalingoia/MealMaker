@@ -5,14 +5,14 @@ import styled from "styled-components";
 import Box from "@mui/material/Box";
 
 const IngredientsMap = {
-  "-1316": "Avocado",
+  "-1316": "Banana", //Avocado
   "-940": "Tomato",
   "-1128": "Rice",
   "-564": "Steak",
-  "-376": "Fish",
+  "-376": "Banana", //Fish
   "-752": "Carrot",
   "-188": "Egg",
-  0: "Chicken",
+  0: "Banana", //Chicken
   "-1504": "Potato",
 };
 
@@ -141,6 +141,7 @@ export class Slots extends React.Component {
         <ButtonsWrapper>
           <Button
             variant="contained"
+            disabled={this.props.lives === 3}
             sx={{
               fontSize: "24px",
               fontFamily: "Open Sans",

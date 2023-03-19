@@ -54,7 +54,7 @@ const History = () => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
+    <Box sx={{ display: "flex", justifyContent: "center", marginTop: "18px" }}>
       <Card
         sx={{
           backgroundColor: "#303747",
@@ -70,7 +70,7 @@ const History = () => {
               fontSize: "18px",
               fontWeight: "600",
               position: "sticky",
-              paddingBottom: "24px",
+              paddingBottom: "15px",
             }}
           >
             History

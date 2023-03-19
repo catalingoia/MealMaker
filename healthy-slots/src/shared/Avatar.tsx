@@ -8,7 +8,7 @@ export default function Avatar() {
         sx={{
           display: "flex",
           alignItems: "center",
-          paddingTop: "30px",
+          paddingTop: "20px",
           paddingLeft: "25px",
           paddingBottom: "20px",
         }}
@@ -22,6 +22,7 @@ export default function Avatar() {
             fontSize: "16px",
             fontFamily: "Open Sans",
             paddingLeft: "10px",
+            fontWeight: "bold",
           }}
         >
           Hello, Username!

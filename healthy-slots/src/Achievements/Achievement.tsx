@@ -14,7 +14,7 @@ export default function Achievement(props: AchievementProps) {
       sx={{
         display: "flex",
         backgroundColor:
-          props.currentStatus % props.objective === 0 ? "#8ee3a6" : "#CDCDCD",
+          props.currentStatus % props.objective === 0 ? "#8EE3A6" : "#CDCDCD",
         borderRadius: "20px",
         width: "90%",
         height: "78px",

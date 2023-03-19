@@ -113,10 +113,6 @@ export default function Recipe() {
               fontFamily: "Open Sans",
               fontSize: "18px",
             }}
-            onClick={() => {
-              setIndex(index + 1);
-              console.log("CLICKED ");
-            }}
           >
             Here is the recipe for the following ingredients of your choice:
             {ingredients}
@@ -142,25 +138,41 @@ export default function Recipe() {
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-evenly",
               flexDirection: "row",
-              marginBottom: "40px",
+              marginBottom: "60px",
             }}
           >
             <Button
               sx={{
                 width: "146px",
                 backgroundColor: "#6fdb8e",
-
                 borderRadius: "20px",
                 color: "white",
+                marginLeft: "19%",
+                "&:focus": {
+                  backgroundColor: "#6fdb8e",
+                },
               }}
             >
               Accept
             </Button>
-            <IconButton>
-              <ArrowForwardIos />
-            </IconButton>
+            {recipes.length > 1 ? (
+              <IconButton
+                onClick={() => {
+                  if (index + 1 > recipes.length) {
+                    setIndex(0);
+                  } else {
+                    setIndex(index + 1);
+                  }
+                  console.log("CLICKED ");
+                }}
+              >
+                <ArrowForwardIos />
+              </IconButton>
+            ) : (
+              <></>
+            )}
           </div>
         </>
       ) : (

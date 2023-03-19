@@ -11,7 +11,7 @@ const IngredientsMap = {
   "-376": "Fish",
   "-752": "Carrot",
   "-188": "Egg",
-  0: "Chichen",
+  0: "Chicken",
   "-1504": "Potato",
 };
 

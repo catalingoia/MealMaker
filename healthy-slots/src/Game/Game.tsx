@@ -1,6 +1,14 @@
 import { Slots } from "./Slots";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Typography,
+} from "@mui/material";
 import { ChangeEvent, useRef, useState } from "react";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import Avatar from "../shared/Avatar";
@@ -9,6 +17,11 @@ import axios from "axios";
 export default function Game() {
   const [lives, setLives] = useState(3);
   const [spinResults, setResults] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
 
   const handleFileInput = useRef<any>(null);
 
@@ -22,6 +35,8 @@ export default function Game() {
     }
   };
 
+  const handleAddPoints = () => {};
+
   const handleSendImage = (image: any) => {
     axios({
       method: "post",
@@ -34,6 +49,12 @@ export default function Game() {
       (response) => {
         console.log(response);
         console.log(spinResults);
+        const responseArray: string[] = Array.from(response.data.ingredients);
+        console.log(responseArray);
+        const containsAll = responseArray.every((element) => {
+          return spinResults.includes(element as never);
+        });
+        !containsAll && setOpenDialog((prev) => !prev);
       },
       (error) => {
         console.log(error);
@@ -115,6 +136,26 @@ export default function Game() {
             onChange={handleImageChange}
           />
         </label>
+        <Dialog
+          open={openDialog}
+          onClose={handleCloseDialog}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Ingredients do not match"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Try another photo
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDialog} autoFocus>
+              Ok
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </>
   );

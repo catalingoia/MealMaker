@@ -13,11 +13,14 @@ import { ChangeEvent, useRef, useState } from "react";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import Avatar from "../shared/Avatar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { addUserPoints } from "../api";
 
 export default function Game() {
   const [lives, setLives] = useState(3);
   const [spinResults, setResults] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
@@ -54,7 +57,16 @@ export default function Game() {
         const containsAll = responseArray.every((element) => {
           return spinResults.includes(element as never);
         });
-        !containsAll && setOpenDialog((prev) => !prev);
+        console.log(containsAll);
+        if (containsAll) {
+          addUserPoints().then(() => {
+            navigate(
+              `/recipe?ingredients=${response.data.ingredients.join(",")}`
+            );
+          });
+        } else {
+          setOpenDialog((prev) => !prev);
+        }
       },
       (error) => {
         console.log(error);

@@ -2,12 +2,13 @@ import React from "react";
 import "./slots.css";
 import { Button } from "@mui/material";
 import styled from "styled-components";
+import Box from "@mui/material/Box";
 
 const IngredientsMap = {
   "-1316": "Avocado",
   "-940": "Tomato",
   "-1128": "Rice",
-  "-564": "Meat",
+  "-564": "Steak",
   "-376": "Fish",
   "-752": "Carrot",
   "-188": "Egg",
@@ -112,7 +113,7 @@ export class Slots extends React.Component {
     return (
       <GameWrapper>
         {/* {winningSound} */}
-
+        <div className={`spinner-background`} />
         <div className={`spinner-container`}>
           <Spinner
             onFinish={this.finishHandler}

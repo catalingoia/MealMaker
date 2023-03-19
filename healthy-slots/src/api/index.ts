@@ -35,8 +35,30 @@ export const getPastDoneRecipe = async () => {
     const ref = doc(db, "users", "VPZY4P66gWSo8BE9n2F1");
     const docSnap = await getDoc(ref);
     const data = docSnap.data();
-
     if (data) return data.recipes;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+export const getUserPoints = async () => {
+  try {
+    const ref = doc(db, "users", "VPZY4P66gWSo8BE9n2F1");
+    const docSnap = await getDoc(ref);
+    const data = docSnap.data();
+    if (data) return data.points;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+export const addUserPoints = async () => {
+  try {
+    const ref = doc(db, "users", "VPZY4P66gWSo8BE9n2F1");
+    const docSnap = await getDoc(ref);
+    const data = docSnap.data();
+
+    if (data) await updateDoc(ref, { points: data.points + 20 });
   } catch (e) {
     console.error("Error adding document: ", e);
   }

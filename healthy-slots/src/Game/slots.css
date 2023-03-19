@@ -57,7 +57,16 @@ h1 span {
   box-sizing: border-box;
 }
 
+.spinner-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: "#0C1426";
+  height: 700px;
+}
+
 .spinner-container {
+  border-radius: 20px;
   overflow: hidden;
   height: 632px;
   padding: 2em;
@@ -86,6 +95,7 @@ h1 span {
 }
 
 .gradient-fade {
+  border-radius: 25px;
   position: absolute;
   top: 32px;
   right: 32px;

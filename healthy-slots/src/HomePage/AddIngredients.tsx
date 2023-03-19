@@ -2,9 +2,12 @@ import { useState, useRef, ChangeEvent } from "react";
 import axios from "axios";
 import { Box, CardContent, Card, Typography, Button } from "@mui/material";
 import { AddAPhoto } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 const AddIngredients = () => {
   const [imageObject, setImageObject] = useState<any>(null);
   const handleFileInput = useRef<any>(null);
+
+  const navigate = useNavigate();
 
   const handleImageUpload = () => {
     if (handleFileInput.current) handleFileInput.current.click();
@@ -31,6 +34,7 @@ const AddIngredients = () => {
     }).then(
       (response) => {
         console.log(response);
+        navigate(`/recipe?ingredients=${response.data.ingredients.join(",")}`);
       },
       (error) => {
         console.log(error);

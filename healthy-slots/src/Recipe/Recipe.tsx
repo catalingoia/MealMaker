@@ -41,6 +41,7 @@ export default function Recipe() {
         )
         .then((response: any) => {
           setRecipes(response.data.meals);
+          console.log(response.data.meals);
         });
     }
   }, [ingredients]);
@@ -100,7 +101,7 @@ export default function Recipe() {
             marginBottom: " 10px",
           }}
         >
-          RECIPES
+          {recipes[index]?.strMeal}
         </Typography>
       </div>
       {ingredients ? (
@@ -141,24 +142,37 @@ export default function Recipe() {
               justifyContent: "space-evenly",
               flexDirection: "row",
               marginBottom: "60px",
+              alignItems: "center",
             }}
           >
             <Button
               sx={{
                 width: "146px",
                 backgroundColor: "#6fdb8e",
+                height: "40px",
                 borderRadius: "20px",
                 color: "white",
                 marginLeft: "19%",
+                font: "Open Sans",
                 "&:focus": {
                   backgroundColor: "#6fdb8e",
                 },
               }}
             >
-              Accept
+              <Typography
+                variant="h6"
+                sx={{
+                  fontFamily: "Open Sans",
+                  fontSize: "20px",
+                  textTransform: "none",
+                }}
+              >
+                Accept
+              </Typography>
             </Button>
             {recipes.length > 1 ? (
               <IconButton
+                sx={{ paddingTop: "20px" }}
                 onClick={() => {
                   if (index + 1 > recipes.length) {
                     setIndex(0);
@@ -168,7 +182,18 @@ export default function Recipe() {
                   console.log("CLICKED ");
                 }}
               >
-                <ArrowForwardIos />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <ArrowForwardIos />
+                  <Typography variant="h6" sx={{ fontSize: "12px" }}>
+                    Next
+                  </Typography>
+                </div>
               </IconButton>
             ) : (
               <></>

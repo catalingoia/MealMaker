@@ -11,8 +11,10 @@ import {
 const Recipe = (props: any) => {
   return (
     <Box
+      onClick={props.onClick}
       sx={{
         display: "flex",
+        cursor: "pointer",
         backgroundColor: "#303747",
         marginBottom: "24px",
       }}
@@ -31,6 +33,7 @@ const Recipe = (props: any) => {
               fontSize: "16px",
               fontFamily: "Open Sans",
               fontWeight: "600",
+              maxWidth: "70%",
             }}
           >
             {props.strMeal}
@@ -42,19 +45,9 @@ const Recipe = (props: any) => {
               fontFamily: "Open Sans",
             }}
           >
-            {props.date}
+            {props.timestamp}
           </Typography>
         </Box>
-        <Typography
-          sx={{
-            color: "white",
-            fontSize: "16px",
-            fontFamily: "Open Sans",
-            fontWeight: "600",
-          }}
-        >
-          {props.description}
-        </Typography>
       </Box>
     </Box>
   );

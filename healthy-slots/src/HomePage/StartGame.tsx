@@ -2,40 +2,15 @@ import { useState, useRef, ChangeEvent } from "react";
 import axios from "axios";
 import { Box, CardContent, Card, Typography, Button } from "@mui/material";
 import { Casino } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 const StartGame = () => {
   const [imageObject, setImageObject] = useState<any>(null);
   const handleFileInput = useRef<any>(null);
 
-  const handleImageUpload = () => {
-    if (handleFileInput.current) handleFileInput.current.click();
-  };
+  const navigate = useNavigate();
 
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setImageObject({
-        imagePreview: URL.createObjectURL(event.target.files[0]),
-        imageFile: event.target.files[0],
-      });
-      handleSendImage();
-    }
-  };
-
-  const handleSendImage = () => {
-    axios({
-      method: "post",
-      url: "http://192.168.0.157:3001/detect-objects",
-      headers: {
-        "Content-Type": "image/jpeg",
-      },
-      data: imageObject.imageFile,
-    }).then(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  const startGame = () => {
+    navigate(`/game`);
   };
 
   return (
@@ -70,21 +45,11 @@ const StartGame = () => {
             },
           }}
           variant="contained"
-          onClick={handleImageUpload}
+          onClick={startGame}
         >
           <Casino sx={{ marginRight: "7px" }}></Casino>
           Start
         </Button>
-        <label>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            ref={handleFileInput}
-            onChange={handleImageChange}
-          />
-        </label>
       </Card>
     </Box>
   );

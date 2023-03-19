@@ -8,25 +8,41 @@ import {
   Button,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getPastDoneRecipe } from "../api";
+import { getPastDoneRecipe, addPastDoneRecipe } from "../api";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const History = () => {
+  const navigate = useNavigate();
+
   const [meals, setMeals] = useState<any>([]);
 
-  const getRecipes = (indexes: number[]) => {
-    indexes.forEach((index: number) => {
-      axios({
-        url: `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${index}`,
-        method: "get",
-      }).then(
-        (response) => {
-          if (response != null) {
-            setMeals([...meals, response.data.meals[0]]);
-          }
-        },
-        (error) => console.log(error)
-      );
+  const getRecipes = (entries: any) => {
+    Promise.all(
+      Object.keys(entries).map((entry: string) =>
+        axios({
+          url: `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${entries[entry]}`,
+          method: "get",
+        })
+      )
+    ).then((results) => {
+      const processedResults = results.map(({ data: { meals } }: any) => {
+        const timestamp = Object.keys(entries).find(
+          (key) => entries[key] === meals[0].idMeal
+        ) as string;
+        console.log(meals);
+
+        let dateFormat = new Date(+timestamp);
+        let date =
+          dateFormat.getDate() +
+          "/" +
+          (dateFormat.getMonth() + 1) +
+          "/" +
+          dateFormat.getFullYear();
+
+        return { ...meals[0], timestamp: date };
+      });
+      setMeals(processedResults);
     });
   };
 
@@ -59,9 +75,16 @@ const History = () => {
           >
             History
           </Typography>
-          <List sx={{ maxHeight: "280px", overflowY: "scroll" }}>
+
+          <List sx={{ maxHeight: "160px", overflowY: "scroll" }}>
             {meals.map((meal: any) => (
-              <Recipe {...meal} />
+              <Recipe
+                onClick={() =>
+                  navigate(`/recipe?ingredients=${meal.strIngredient1}`)
+                }
+                key={meal}
+                {...meal}
+              />
             ))}
           </List>
         </CardContent>

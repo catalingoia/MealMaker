@@ -1,6 +1,6 @@
-# Heckathon
+# Healthy Slots
 
-This is a project for a 24-hour hackathon with the Health&Nutrition topic, held by TechBreeze
+Healthy Slots is a project for a 24-hour hackathon with the Health&Nutrition topic, held by TechBreeze
 
 The following were the important points that had to be followed:
 

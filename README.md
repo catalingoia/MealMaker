@@ -1,4 +1,4 @@
-# Healthy Slots
+# Meal maker
 
 Healthy Slots is a project for a 24-hour hackathon with the Health&Nutrition topic, held by TechBreeze
 
